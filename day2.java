@@ -61,3 +61,91 @@ public int maxProfit(int[] prices) {
         }
         return maxWater;
     }
+
+
+    class Solution {
+        public static String longestCommonPrefix(String[] strs) {
+            if(strs.length == 0  || strs == null){
+             return "";
+            }
+            String prefix = strs[0];
+            for(int i = 1; i < strs.length;i++){
+             String s = strs[i];
+             int j = 0;
+             while(j < prefix.length() && j < s.length() && prefix.charAt(j) == s.charAt(j)){
+                j++;
+             }
+    
+             if(j == 0){
+                return "";
+             }
+             else{
+                prefix = prefix.substring(0,j);
+             }
+            }
+            return prefix;
+       }
+    }
+
+    class Solution {
+        public boolean validPalindrome(String s) {
+            int lp = 0;
+            int rp = s.length()-1;
+            int count1 = 0;
+            int count2 = 0;
+            while(lp < rp){
+            
+                if(s.charAt(lp) == s.charAt(rp)){
+                    lp++;
+                    rp--;
+                }else{
+                    rp--;
+                    count1++;
+                }
+            }
+    
+             lp = 0;
+            rp = s.length()-1;
+             while(lp < rp){
+            
+                if(s.charAt(lp) == s.charAt(rp)){
+                    lp++;
+                    rp--;
+                }else{
+                    lp++;
+                    count2++;
+                }
+            }
+    
+            if(count1 == 0 || count2 == 0 ){
+                return true;
+            }
+            if(count1 == 1 || count2 == 1 ){
+                return true;
+            }
+    
+            return false;
+        }
+    }
+
+    class Solution {
+        public String reverseWords(String s) {
+            Stack<String> st = new Stack<>();
+            String[] str = s.trim().split("\\s+");
+            StringBuilder sb = new StringBuilder();
+            
+            for (int i = 0; i < str.length; i++) {
+                st.push(str[i]);
+            }
+            
+            while (!st.isEmpty()) {
+                sb.append(st.pop());
+                if (!st.isEmpty()) {
+                    sb.append(" ");
+                }
+            }
+            
+            return sb.toString();
+        }
+    }
+    
